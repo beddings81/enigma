@@ -11,7 +11,7 @@ RSpec.describe Enigma do
     expect(enigma.character_set).to eq(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "])
   end
 
-  it 'can slit a message' do
+  it 'can split a message' do
     expect(enigma.spliter("hello")).to eq(["h", "e", "l", "l", "o"])
   end
 
@@ -23,7 +23,11 @@ RSpec.describe Enigma do
     expect(enigma.shift([02,27,71,15], [1,0,2,5])).to eq({:A => 3, :B => 27, :C => 73, :D => 20})
   end
 
-  xit 'can encrypt a message with a key and date' do
-    expect(enigma.encrypt("hello world", "02715", "040895")).to eq({encryption: "keder ohulw", key: "02715", date: "040895"})
+  it 'can take a key and format it as an array with 4 elements' do
+    expect(enigma.set_key("291018")).to eq([[02,27,71,15]])
   end
+
+  # it 'can encrypt a message with a key and date' do
+  #   expect(enigma.encrypt("hello world", "02715", "040895")).to eq({encryption: "keder ohulw", key: "02715", date: "040895"})
+  # end
 end
