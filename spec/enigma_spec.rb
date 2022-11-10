@@ -16,7 +16,7 @@ RSpec.describe Enigma do
   end
 
   it 'can take a date and create the offsets' do
-    expect(enigma.offseter("040895")).to eq(1025)
+    expect(enigma.offseter("040895")).to eq([1,0,2,5])
   end
 
   it 'can take the keys and offsets to make a shift' do
