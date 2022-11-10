@@ -1,10 +1,11 @@
 class Enigma
 
-  # def encrypt(message, key, date)  
-  #   split = spliter(message)
-  #   offset = offseter(date)
-  #   # require 'pry'; binding.pry
-  # end
+  def encrypt(message, key, date)  
+    spliter(message)
+    offseter(date)
+    set_key(key)
+    # require 'pry'; binding.pry
+  end
 
   def character_set
     set = ("a".."z").to_a
@@ -26,6 +27,25 @@ class Enigma
     offsets
   end
 
+  def set_key(key)
+    key_array = []
+    x = key.split("")
+    a = x[0..1].join.to_i
+    b = x[1..2].join.to_i
+    c = x[2..3].join.to_i
+    d = x[3..4].join.to_i
+    key_array << a
+    key_array << b
+    key_array << c
+    key_array << d
+    key_array
+    # require 'pry'; binding.pry
+  end
+
+  def key_hash
+    key_hash = {:A => a, :B => b, :C => c, :D => d}
+  end
+
   def shift(keys, offsets)
     shift_hash = {:A => 0, :B => 0, :C => 0, :D => 0}
     shift_hash[:A] += keys[0] + offsets[0]
@@ -34,6 +54,4 @@ class Enigma
     shift_hash[:D] += keys[3] + offsets[3]
     shift_hash
   end
-
-
 end
