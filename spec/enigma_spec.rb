@@ -16,7 +16,7 @@ RSpec.describe Enigma do
   end
 
   it 'can take a date and create the offsets' do
-    expect(enigma.offset("040895")).to eq(1025)
+    expect(enigma.offseter("040895")).to eq(1025)
   end
 
   xit 'can encrypt a message with a key and date' do
