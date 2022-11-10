@@ -24,7 +24,7 @@ RSpec.describe Enigma do
   end
 
   it 'can take a key and format it as an array with 4 elements' do
-    expect(enigma.set_key("291018")).to eq([[02,27,71,15]])
+    expect(enigma.set_key("02715")).to eq([02,27,71,15])
   end
 
   # it 'can encrypt a message with a key and date' do
