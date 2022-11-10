@@ -19,6 +19,10 @@ RSpec.describe Enigma do
     expect(enigma.offseter("040895")).to eq(1025)
   end
 
+  it 'can take the keys and offsets to make a shift' do
+    expect(enigma.shift([02,27,71,15], [1,0,2,5])).to eq({:A => 3, :B => 27, :C => 73, :D => 20})
+  end
+
   xit 'can encrypt a message with a key and date' do
     expect(enigma.encrypt("hello world", "02715", "040895")).to eq({encryption: "keder ohulw", key: "02715", date: "040895"})
   end
