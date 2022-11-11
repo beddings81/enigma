@@ -9,6 +9,10 @@ RSpec.describe Rotation do
     expect(rotation.letters).to eq(("a".."z").to_a << " ")
   end
 
+   it 'can turn message into an array' do
+    expect(rotation.set_str).to eq(["h", "e", "l", "l", "o"," ", "w", "o", "r", "l", "d"])
+  end
+
   it 'can find a new letter based on a desired shift' do
     expect(rotation.spin("a", 7)).to eq("h")
     expect(rotation.spin("b", 27)).to eq("b")
