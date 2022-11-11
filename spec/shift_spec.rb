@@ -29,7 +29,13 @@ RSpec.describe Shift do
   end
 
    it 'can take a key and format it as 4 keys' do
-    expect(shift.set_key("02715")).to eq({:A => "02", :B => "27", :C => "71", :D => "15"})
+    shift = Shift.new({:key => "02715"})
+    expect(shift.set_key).to eq({:A => "02", :B => "27", :C => "71", :D => "15"})
+  end
+
+ it 'can take the keys and offsets to make a shift' do
+  shift = Shift.new({:key => "02715"})
+  expect(shift.find_shift).to eq({:A => 10, :B => 35, :C => 79, :D => 19})
   end
 end
 
