@@ -10,6 +10,7 @@ class Shift
   end
 
   def set_offset(date=nil)
+    # (Date.parse(date).strftime('%d%m%y').to_i ** 2).to_s[-4..-1]
     if date.nil?
       (DateTime.now.strftime('%d%m%y').to_i ** 2).to_s[-4..-1]
     else 
@@ -21,7 +22,14 @@ class Shift
     @numbers.sample(5).join
   end
 
-  def set_key(key)
+  def set_key
     {:A => key[0..1], :B => key[1..2], :C => key[2..3],:D => key[3..4]}
+  end
+
+  def find_shift
+    {:A => set_key[:A].to_i + set_offset[0].to_i,
+     :B => set_key[:B].to_i + set_offset[1].to_i,
+     :C => set_key[:C].to_i + set_offset[2].to_i,
+     :D => set_key[:D].to_i + set_offset[3].to_i}
   end
 end
