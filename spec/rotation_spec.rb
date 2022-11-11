@@ -5,5 +5,7 @@ RSpec.describe Rotation do
 
   it 'exist and starts with letters' do
     expect(rotation).to be_a(Rotation)
+    expect(rotation.string).to eq("hello world")
+    expect(rotation.letters).to eq(("a".."z").to_a << " ")
   end
 end
