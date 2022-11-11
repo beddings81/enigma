@@ -6,6 +6,10 @@ class Rotation
     @letters = ("a".."z").to_a << " "
   end
 
+  def set_str
+    string.chars
+  end
+
   def spin(letter, shift)
     letters[(letters.find_index(letter) + shift) % 27]
   end
