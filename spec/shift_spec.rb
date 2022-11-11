@@ -10,7 +10,7 @@ RSpec.describe Shift do
   end
 
   it 'can take a date and create the offsets' do
-    expect(shift.set_date("040895")).to eq([1,0,2,5])
-    expect(shift.set_date.to eq([8,8,8,4])
+    expect(shift.set_date("040895")).to eq("1025")
+    expect(shift.set_date).to eq("8884")
   end
 end
