@@ -1,10 +1,11 @@
 require 'date'
 
 class Shift
-  attr_reader :key, :numbers
+  attr_reader :key, :date, :numbers
 
-  def initialize
-    @key = ""
+  def initialize(input = {})
+    @key = input[:key] || ""
+    @date = input[:date] || Date.today.to_s
     @numbers = ["0","1","2","3","4","5","6","7","8","9"]
   end
 
