@@ -10,6 +10,15 @@ RSpec.describe Shift do
     expect(shift.numbers).to eq(["0","1","2","3","4","5","6","7","8","9"])
   end
 
+  it 'can have a key passed in' do
+    shift = Shift.new({:key => "12345"})
+    expect(shift.key).to eq("12345")
+  end
+
+  it 'can have a date passed in or it defaults to today' do
+    expect(shift.date).to eq(Date.today.to_s)
+  end
+
   it 'can take a date and create the offsets' do
     expect(shift.set_offset("040895")).to eq("1025")
     expect(shift.set_offset).to eq("8884")
