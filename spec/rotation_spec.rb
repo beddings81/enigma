@@ -8,4 +8,10 @@ RSpec.describe Rotation do
     expect(rotation.string).to eq("hello world")
     expect(rotation.letters).to eq(("a".."z").to_a << " ")
   end
+
+  it 'can find a new letter based on a desired shift' do
+    expect(rotation.spin("a", 7)).to eq("h")
+    expect(rotation.spin("b", 27)).to eq("b")
+    expect(rotation.spin("z", 10)).to eq("i")
+  end
 end
