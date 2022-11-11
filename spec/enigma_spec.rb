@@ -8,7 +8,7 @@ RSpec.describe Enigma do
   end
 
   it 'has a character set' do
-    expect(enigma.character_set).to eq(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "])
+    expect(enigma.characters).to eq(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "])
   end
 
   it 'can split a message' do
@@ -27,7 +27,8 @@ RSpec.describe Enigma do
     expect(enigma.set_key("02715")).to eq([02,27,71,15])
   end
 
-  xit 'can encrypt a message with a key and date' do
+  it 'can encrypt a message with a key and date' do
+    enigma.caesar({:A => 3, :B => 27, :C => 73, :D => 20})
     expect(enigma.encrypt("hello world", "02715", "040895")).to eq({encryption: "keder ohulw", key: "02715", date: "040895"})
   end
 end
