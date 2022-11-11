@@ -11,12 +11,16 @@ RSpec.describe Shift do
   end
 
   it 'can take a date and create the offsets' do
-    expect(shift.set_date("040895")).to eq("1025")
-    expect(shift.set_date).to eq("8884")
+    expect(shift.set_offset("040895")).to eq("1025")
+    expect(shift.set_offset).to eq("8884")
   end
 
   it 'can generate a random 5 digit key' do
     expect(shift.rand_key).to be_a(String)
+  end
+
+   it 'can take a key and format it as 4 keys' do
+    expect(shift.set_key("02715")).to eq({:A => "02", :B => "27", :C => "71", :D => "15"})
   end
 end
 

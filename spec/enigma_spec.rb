@@ -15,20 +15,16 @@ RSpec.describe Enigma do
     expect(enigma.spliter("hello")).to eq(["h", "e", "l", "l", "o"])
   end
 
-  it 'can take a date and create the offsets' do
-    expect(enigma.offseter("040895")).to eq([1,0,2,5])
-  end
-
   it 'can take the keys and offsets to make a shift' do
     expect(enigma.shift([02,27,71,15], [1,0,2,5])).to eq({:A => 3, :B => 27, :C => 73, :D => 20})
   end
 
-  it 'can take a key and format it as an array with 4 elements' do
-    expect(enigma.set_key("02715")).to eq([02,27,71,15])
-  end
+  # it 'can take a key and format it as an array with 4 elements' do
+  #   expect(enigma.set_key("02715")).to eq([02,27,71,15])
+  # end
 
   it 'can encrypt a message with a key and date' do
-    enigma.caesar({:A => 3, :B => 27, :C => 73, :D => 20})
-    expect(enigma.encrypt("hello world", "02715", "040895")).to eq({encryption: "keder ohulw", key: "02715", date: "040895"})
+    expect(enigma.cypher("hell", {:A => 3, :B => 27, :C => 73, :D => 20})).to eq("keder ohulw")
+    # expect(enigma.encrypt("hello world", "02715", "040895")).to eq({encryption: "keder ohulw", key: "02715", date: "040895"})
   end
 end
