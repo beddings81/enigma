@@ -1,22 +1,20 @@
+require './lib/shift'
+require './lib/rotation'
+
 class Enigma
 
-  # def encrypt(message, key, date)
-  # end
+  def encrypt(message, key, date)
+    shift = Shift.new({:key => key, :date => date})
+    # require 'pry'; binding.pry
+    new_message = Rotation.new(message).cipher(shift.find_shift)
+    "{encryption: => #{new_message},
+      key:        => #{key},
+      date:       => #{date}
+    }"
+  end
 
-#   def cypher(message,keys)
-#   keys = keys.va lues
-#   encrypted
-#   "hello world" solit(u).
-#   kevs-each do
-#     encrvoter += character
-#     set (character
-#     require 'pry'; binding.orv
-#     end
-#   encrypted
-#   end
-# end
+  def decrypt(message, key, date)
+    
+  end
 
-#find_index(letter)
-#.rotate!
-# collect new letters
 end
