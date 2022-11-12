@@ -13,4 +13,8 @@ class Enigma
     }"
   end
 
+  def decrypt(message, key, date)
+    
+  end
+
 end
