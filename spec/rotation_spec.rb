@@ -22,4 +22,9 @@ RSpec.describe Rotation do
   it 'can cipher a message with a key and date' do
     expect(rotation.cipher({:A => 3, :B=> 27, :C=> 73, :D => 20})).to eq("keder ohulw")
   end
+
+  it 'can take a shift and make it negative' do
+    shift = {:A => 7, :B => 24, :C => 3, :D => 0}
+    rotation.reverse_shift(shift)
+    expect(shift).to eq({:A => -7, :B => -24, :C => -3, :D => -0})
 end
