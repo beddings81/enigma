@@ -42,6 +42,12 @@ class Rotation
     end
     encrypted
   end
+
+  def reverse_shift(shift)
+    shift.each do |k, v|
+      shift[k] = -v
+    end
+  end
 end
 
         # shifted_alphabet = letters.rotate(find_shift[:a])

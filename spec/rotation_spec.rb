@@ -27,4 +27,5 @@ RSpec.describe Rotation do
     shift = {:A => 7, :B => 24, :C => 3, :D => 0}
     rotation.reverse_shift(shift)
     expect(shift).to eq({:A => -7, :B => -24, :C => -3, :D => -0})
+  end
 end
