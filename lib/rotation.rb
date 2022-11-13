@@ -44,10 +44,33 @@ class Rotation < Shift
       shift[k] = -v
     end
   end
-end
 
-        # shifted_alphabet = letters.rotate(find_shift[:a])
-        # index_position = alphabet.find_index(letter)
-        # encrypted += shifted_alphabet[index_position]
-        # counter += 1
-        #counter resets to go back through the string
+  def undo(thing, shift)
+    counter = 0
+    decrypted = ""
+    thing.downcase.each_char do |char|
+      if counter == 0
+        shifted = letters.rotate(-shift[:A])
+        index_position = letters.find_index(char)
+        decrypted += shifted[index_position]
+        counter += 1
+      elsif counter == 1
+        shifted = letters.rotate(-shift[:B])
+        index_position = letters.find_index(char)
+        decrypted += shifted[index_position]
+        counter += 1
+      elsif counter == 2
+        shifted = letters.rotate(-shift[:C])
+        index_position = letters.find_index(char)
+        decrypted += shifted[index_position]
+        counter += 1
+      elsif counter == 3
+        shifted = letters.rotate(-shift[:D])
+        index_position = letters.find_index(char)
+        decrypted += shifted[index_position]
+        counter = 0
+      end
+    end
+    decrypted
+  end
+end
