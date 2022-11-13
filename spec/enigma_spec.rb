@@ -22,4 +22,7 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("HELLO WORLD", "02715")).to eq({:date=>"121122", :encryption=>"rmjdyhugatb", :key=>"02715"})
   end
 
+  it 'can decrypt a message with a key (uses todays date)' do
+    expect(enigma.encrypt("hello world")).to eq({:date=>"121122", :encryption=>"lhebscpevox", :key=>"77667"})
+  end
 end
