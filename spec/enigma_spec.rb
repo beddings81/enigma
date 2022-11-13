@@ -8,7 +8,7 @@ RSpec.describe Enigma do
   end
 
   it 'can encrypt a message with a key and date' do
-    expect(enigma.encrypt("hello world", "02715", "040895")).to eq({:date=>"040895", :encryption=>"keder ohulw", :key=>"02715"})
+    expect(enigma.encrypt("hell!o world!", "02715", "040895")).to eq({:date=>"040895", :encryption=>"kede!r ohulw!", :key=>"02715"})
     expect(enigma.encrypt("HELLO WORLD", "02715", "040895")).to eq({:date=>"040895", :encryption=>"keder ohulw", :key=>"02715"})
   end
 
