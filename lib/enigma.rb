@@ -1,20 +1,28 @@
 require './lib/shift'
-require './lib/rotation'
+require_relative '../lib/rotation'
 
-class Enigma
+class Enigma < Rotation
 
   def encrypt(message, key, date)
-    shift = Shift.new({:key => key, :date => date})
-    # require 'pry'; binding.pry
-    new_message = Rotation.new(message).cipher(shift.find_shift)
-    "{encryption: => #{new_message},
-      key:        => #{key},
-      date:       => #{date}
-    }"
+    the_keys = set_key(key)
+    the_offsets = set_offset(date)
+    the_shifts = find_shift(the_keys, the_offsets)
+    {
+      encryption: cipher(message, the_shifts),
+      key: key,
+      date: date
+    }
   end
 
   def decrypt(message, key, date)
-    
+    the_keys = set_key(key)
+    the_offsets = set_offset(date)
+    the_shifts = find_shift(the_keys, the_offsets)
+    {
+      encryption: undo(message, the_shifts),
+      key: key,
+      date: date
+    }
   end
 
 end
