@@ -17,8 +17,12 @@ class Shift
     end
   end
 
+  def today
+    Date.today.strftime("%d%m%y")
+  end
+
   def rand_key
-    @numbers.sample(5).join
+    (10000..99999).to_a.sample.to_s
   end
 
   def set_key(key)
