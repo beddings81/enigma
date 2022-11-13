@@ -14,26 +14,30 @@ class Rotation < Shift
     counter = 0
     encrypted = ""
     thing.downcase.each_char do |char|
-      if counter == 0
-        shifted = letters.rotate(shifts[:A])
-        index_position = letters.find_index(char)
-        encrypted += shifted[index_position]
-        counter += 1
-      elsif counter == 1
-        shifted = letters.rotate(shifts[:B])
-        index_position = letters.find_index(char)
-        encrypted += shifted[index_position]
-        counter += 1
-      elsif counter == 2
-        shifted = letters.rotate(shifts[:C])
-        index_position = letters.find_index(char)
-        encrypted += shifted[index_position]
-        counter += 1
-      elsif counter == 3
-        shifted = letters.rotate(shifts[:D])
-        index_position = letters.find_index(char)
-        encrypted += shifted[index_position]
-        counter = 0
+      if !@letters.include?(char)
+        encrypted += char
+      else
+        if counter == 0
+          shifted = letters.rotate(shifts[:A])
+          index_position = letters.find_index(char)
+          encrypted += shifted[index_position]
+          counter += 1
+        elsif counter == 1
+          shifted = letters.rotate(shifts[:B])
+          index_position = letters.find_index(char)
+          encrypted += shifted[index_position]
+          counter += 1
+        elsif counter == 2
+          shifted = letters.rotate(shifts[:C])
+          index_position = letters.find_index(char)
+          encrypted += shifted[index_position]
+          counter += 1
+        elsif counter == 3
+          shifted = letters.rotate(shifts[:D])
+          index_position = letters.find_index(char)
+          encrypted += shifted[index_position]
+          counter = 0
+        end
       end
     end
     encrypted
