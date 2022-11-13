@@ -14,7 +14,7 @@ RSpec.describe Enigma do
 
 
   it 'can decrypt a message with a key and date' do
-    expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq({:date=>"040895", :decryption=>"hello world", :key=>"02715"})
+    expect(enigma.decrypt("kede!r ohulw!", "02715", "040895")).to eq({:date=>"040895", :decryption=>"hell!o world!", :key=>"02715"})
     expect(enigma.decrypt("KEDER OHULW", "02715", "040895")).to eq({:date=>"040895", :decryption=>"hello world", :key=>"02715"})
   end
 
