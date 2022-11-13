@@ -28,4 +28,8 @@ RSpec.describe Rotation do
     rotation.reverse_shift(shift)
     expect(shift).to eq({:A => -7, :B => -24, :C => -3, :D => -0})
   end
+
+  it 'can decrypt a message given the shifts' do
+    expect(rotation.undo("Keder ohUlw", {:A => 3, :B=> 27, :C=> 73, :D => 20})).to eq("hello world")
+  end
 end
