@@ -1,23 +1,19 @@
-class Rotation
-  attr_reader :string, :letters
+require_relative '../lib/shift'
+class Rotation < Shift
+  attr_reader :letters
 
-  def initialize(string)
-    @string = string.downcase
+  def initialize
     @letters = ("a".."z").to_a << " "
-  end
-
-  def set_str
-    string.chars
   end
 
   def shift(letter, shift)
     letters[(letters.find_index(letter) + shift) % 27]
   end
 
-  def cipher(shifts)
+  def cipher(thing, shifts)
     counter = 0
     encrypted = ""
-    string.each_char do |char|
+    thing.downcase.each_char do |char|
       if counter == 0
         shifted = letters.rotate(shifts[:A])
         index_position = letters.find_index(char)
