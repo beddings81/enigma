@@ -10,7 +10,6 @@ class Shift
   end
 
   def set_offset(date=nil)
-    # (Date.parse(date).strftime('%d%m%y').to_i ** 2).to_s[-4..-1]
     if date.nil?
       (DateTime.now.strftime('%d%m%y').to_i ** 2).to_s[-4..-1]
     else 
