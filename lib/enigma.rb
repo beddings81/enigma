@@ -19,7 +19,7 @@ class Enigma < Rotation
     the_offsets = set_offset(date)
     the_shifts = find_shift(the_keys, the_offsets)
     {
-      decryption: undo(message, the_shifts),
+      decryption: reverse(message, the_shifts),
       key: key,
       date: date
     }
