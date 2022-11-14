@@ -1,7 +1,8 @@
-require './lib/shift'
 require_relative '../lib/rotation'
+require_relative '../lib/shift'
 
 class Enigma < Rotation
+  include Shift
 
   def encrypt(message, key=rand_key, date=today)
     the_keys = set_key(key)

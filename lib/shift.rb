@@ -1,14 +1,7 @@
 require 'date'
 
-class Shift
-  attr_reader :key, :date, :numbers
-
-  def initialize(input = {})
-    @key = input[:key] || ""
-    @date = input[:date] || Date.today.to_s
-    @numbers = ["0","1","2","3","4","5","6","7","8","9"]
-  end
-
+module Shift
+ 
   def set_offset(date=nil)
     if date.nil?
       (DateTime.now.strftime('%d%m%y').to_i ** 2).to_s[-4..-1]

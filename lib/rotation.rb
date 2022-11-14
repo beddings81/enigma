@@ -1,5 +1,4 @@
-require_relative '../lib/shift'
-class Rotation < Shift
+class Rotation
   attr_reader :letters
 
   def initialize
