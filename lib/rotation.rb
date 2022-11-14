@@ -1,5 +1,4 @@
-require_relative '../lib/shift'
-class Rotation < Shift
+class Rotation
   attr_reader :letters
 
   def initialize
@@ -49,7 +48,7 @@ class Rotation < Shift
     end
   end
 
-  def undo(thing, shift)
+  def reverse(thing, shift)
     counter = 0
     decrypted = ""
     thing.downcase.each_char do |char|
