@@ -38,4 +38,15 @@ RSpec.describe Enigma do
     expected_date = Date.today.strftime("%d%m%y")
     expect(enigma.today).to eq(expected_date)
   end
+
+  it 'can take a date and create the offsets' do
+    expect(enigma.set_offset("040895")).to eq("1025")
+    expect(enigma.set_offset).to eq("8884")
+  end
+
+  it 'can generate a random 5 digit key' do
+    allow(enigma).to receive(:rand_key).and_return("12345")
+    expect(enigma.rand_key).to be_a(String)
+    expect(enigma.rand_key).to eq("12345")
+  end
 end
