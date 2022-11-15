@@ -1,5 +1,4 @@
 require './lib/enigma'
-require './lib/rotation'
 
 RSpec.describe Enigma do
   let!(:enigma) {Enigma.new}

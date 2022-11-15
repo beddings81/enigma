@@ -3,7 +3,6 @@ class Rotation
 
   attr_accessor :counter
               
-
   def initialize
     @letters = ("a".."z").to_a << " "
     @counter = 0
