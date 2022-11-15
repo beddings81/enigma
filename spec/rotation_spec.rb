@@ -8,10 +8,17 @@ RSpec.describe Rotation do
     expect(rotation.letters).to eq(("a".."z").to_a << " ")
   end
 
-  it 'can find a new letter based on a desired shift' do
-    expect(rotation.shift("a", 7)).to eq("h")
-    expect(rotation.shift("b", 27)).to eq("b")
-    expect(rotation.shift("z", 10)).to eq("i")
+  # it 'can find a new letter based on a desired shift' do
+  #   expect(rotation.shift("a", 7)).to eq("h")
+  #   expect(rotation.shift("b", 27)).to eq("b")
+  #   expect(rotation.shift("z", 10)).to eq("i")
+  # end
+
+  it 'can find the index position of a letter' do
+    expect(rotation.index("a")).to eq(0)
+    expect(rotation.index("i")).to eq(8)
+    expect(rotation.index("q")).to eq(16)
+    expect(rotation.index("z")).to eq(25)
   end
   
   it 'can cipher a message with a key and date' do
