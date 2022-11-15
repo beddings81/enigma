@@ -14,6 +14,11 @@ RSpec.describe Rotation do
   #   expect(rotation.shift("z", 10)).to eq("i")
   # end
 
+  it 'can find the a shift' do
+    shifted = ["d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b", "c"]
+    expect(rotation.a_shift({:A => 3, :B=> 27, :C=> 73, :D => 20})).to eq(shifted)
+  end
+
   it 'can find the index position of a letter' do
     expect(rotation.index("a")).to eq(0)
     expect(rotation.index("i")).to eq(8)
