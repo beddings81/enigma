@@ -1,41 +1,68 @@
 class Rotation
   attr_reader :letters
 
+  attr_accessor :counter
+              
   def initialize
     @letters = ("a".."z").to_a << " "
+    @counter = 0
   end
 
-  def shift(letter, shift)
-    letters[(letters.find_index(letter) + shift) % 27]
+  def a_shift(shifts, reverse = false)
+    @counter += 1
+    if reverse
+      letters.rotate(-shifts[:A])
+    else
+      letters.rotate(shifts[:A])
+    end
   end
 
-  def cipher(thing, shifts)
-    counter = 0
+  def b_shift(shifts, reverse = false)
+    @counter += 1
+    if reverse
+      letters.rotate(-shifts[:B])
+    else
+      letters.rotate(shifts[:B])
+    end
+  end
+
+  def c_shift(shifts, reverse = false)
+    @counter += 1
+    if reverse
+      letters.rotate(-shifts[:C])
+    else
+      letters.rotate(shifts[:C])
+    end
+  end
+
+   def d_shift(shifts, reverse = false)
+    if reverse
+      letters.rotate(-shifts[:D])
+    else
+      letters.rotate(shifts[:D])
+    end
+  end
+
+  def index(char)
+    letters.find_index(char)
+  end
+
+
+  def cipher(message, shift)
     encrypted = ""
-    thing.downcase.each_char do |char|
+    message.downcase.each_char do |char|
       if !@letters.include?(char)
         encrypted += char
       else
-        if counter == 0
-          shifted = letters.rotate(shifts[:A])
-          index_position = letters.find_index(char)
-          encrypted += shifted[index_position]
-          counter += 1
-        elsif counter == 1
-          shifted = letters.rotate(shifts[:B])
-          index_position = letters.find_index(char)
-          encrypted += shifted[index_position]
-          counter += 1
-        elsif counter == 2
-          shifted = letters.rotate(shifts[:C])
-          index_position = letters.find_index(char)
-          encrypted += shifted[index_position]
-          counter += 1
-        elsif counter == 3
-          shifted = letters.rotate(shifts[:D])
-          index_position = letters.find_index(char)
-          encrypted += shifted[index_position]
-          counter = 0
+        if @counter == 0
+          encrypted += a_shift(shift)[index(char)]
+        elsif @counter == 1
+          encrypted += b_shift(shift)[index(char)]
+        elsif @counter == 2
+          encrypted += c_shift(shift)[index(char)]
+        elsif @counter == 3
+          encrypted += d_shift(shift)[index(char)]
+          @counter = 0
         end
       end
     end
@@ -48,34 +75,20 @@ class Rotation
     end
   end
 
-  def reverse(thing, shift)
-    counter = 0
+  def reverse(message, shift, reverse=true)
     decrypted = ""
-    thing.downcase.each_char do |char|
+    message.downcase.each_char do |char|
        if !@letters.include?(char)
         decrypted += char
-      else
-        if counter == 0
-          shifted = letters.rotate(-shift[:A])
-          index_position = letters.find_index(char)
-          decrypted += shifted[index_position]
-          counter += 1
-        elsif counter == 1
-          shifted = letters.rotate(-shift[:B])
-          index_position = letters.find_index(char)
-          decrypted += shifted[index_position]
-          counter += 1
-        elsif counter == 2
-          shifted = letters.rotate(-shift[:C])
-          index_position = letters.find_index(char)
-          decrypted += shifted[index_position]
-          counter += 1
-        elsif counter == 3
-          shifted = letters.rotate(-shift[:D])
-          index_position = letters.find_index(char)
-          decrypted += shifted[index_position]
-          counter = 0
-        end
+      elsif @counter == 0
+        decrypted += a_shift(shift, reverse)[index(char)]
+      elsif @counter == 1
+        decrypted += b_shift(shift, reverse)[index(char)]
+      elsif @counter == 2
+        decrypted += c_shift(shift, reverse)[index(char)]
+      elsif @counter == 3
+        decrypted += d_shift(shift, reverse)[index(char)]
+        @counter = 0
       end
     end
     decrypted
