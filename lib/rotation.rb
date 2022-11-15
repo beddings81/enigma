@@ -27,23 +27,19 @@ class Rotation
       else
         if counter == 0
           # shifted = letters.rotate(shifts[:A])
-          # index_position = letters.find_index(char)
           encrypted += a_shift(shifts)[index(char)]
           counter += 1
         elsif counter == 1
           shifted = letters.rotate(shifts[:B])
-          index_position = letters.find_index(char)
-          encrypted += shifted[index_position]
+          encrypted += shifted[index(char)]
           counter += 1
         elsif counter == 2
           shifted = letters.rotate(shifts[:C])
-          index_position = letters.find_index(char)
-          encrypted += shifted[index_position]
+          encrypted += shifted[index(char)]
           counter += 1
         elsif counter == 3
           shifted = letters.rotate(shifts[:D])
-          index_position = letters.find_index(char)
-          encrypted += shifted[index_position]
+          encrypted += shifted[index(char)]
           counter = 0
         end
       end
