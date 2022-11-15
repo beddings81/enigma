@@ -6,6 +6,7 @@ RSpec.describe Rotation do
   it 'exist and starts with letters' do
     expect(rotation).to be_a(Rotation)
     expect(rotation.letters).to eq(("a".."z").to_a << " ")
+    expect(rotation.counter).to eq(0)
   end
 
   # it 'can find a new letter based on a desired shift' do
