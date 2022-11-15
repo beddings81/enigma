@@ -25,6 +25,14 @@ class Rotation
     end
   end
 
+  def c_shift(shifts, reverse = false)
+    if reverse
+      letters.rotate(-shifts[:C])
+    else
+      letters.rotate(shifts[:C])
+    end
+  end
+
   
 
   def index(char)
@@ -46,8 +54,7 @@ class Rotation
           encrypted += b_shift(shifts)[index(char)]
           counter += 1
         elsif counter == 2
-          shifted = letters.rotate(shifts[:C])
-          encrypted += shifted[index(char)]
+          encrypted += c_shift(shifts)[index(char)]
           counter += 1
         elsif counter == 3
           shifted = letters.rotate(shifts[:D])
@@ -79,8 +86,7 @@ class Rotation
           decrypted += b_shift(shift, reverse)[index(char)]
           counter += 1
         elsif counter == 2
-          shifted = letters.rotate(-shift[:C])
-          decrypted += shifted[index(char)]
+          decrypted += c_shift(shift, reverse)[index(char)]
           counter += 1
         elsif counter == 3
           shifted = letters.rotate(-shift[:D])
