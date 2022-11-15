@@ -8,6 +8,7 @@ class Enigma < Rotation
     the_keys = set_key(key)
     the_offsets = set_offset(date)
     the_shifts = find_shift(the_keys, the_offsets)
+    @counter = 0
     {
       encryption: cipher(message, the_shifts),
       key: key,
@@ -19,11 +20,11 @@ class Enigma < Rotation
     the_keys = set_key(key)
     the_offsets = set_offset(date)
     the_shifts = find_shift(the_keys, the_offsets)
+    @counter = 0
     {
-      decryption: reverse(message, the_shifts),
+      decryption: reverse(message, the_shifts, reverse=true),
       key: key,
       date: date
     }
   end
-
 end
