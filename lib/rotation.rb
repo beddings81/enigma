@@ -5,9 +5,18 @@ class Rotation
     @letters = ("a".."z").to_a << " "
   end
 
-  def shift(letter, shift)
-    letters[(letters.find_index(letter) + shift) % 27]
+  # def shift(letter, shift)
+  #   letters[(letters.find_index(letter) + shift) % 27]
+  # end
+
+  def a_shift(shifts)
+    letters.rotate(shifts[:A])
   end
+
+  def index(char)
+    letters.find_index(char)
+  end
+
 
   def cipher(thing, shifts)
     counter = 0
@@ -17,9 +26,9 @@ class Rotation
         encrypted += char
       else
         if counter == 0
-          shifted = letters.rotate(shifts[:A])
-          index_position = letters.find_index(char)
-          encrypted += shifted[index_position]
+          # shifted = letters.rotate(shifts[:A])
+          # index_position = letters.find_index(char)
+          encrypted += a_shift(shifts)[index(char)]
           counter += 1
         elsif counter == 1
           shifted = letters.rotate(shifts[:B])
