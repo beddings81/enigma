@@ -14,7 +14,7 @@ RSpec.describe Rotation do
   #   expect(rotation.shift("z", 10)).to eq("i")
   # end
 
-  it 'can find the a shift' do
+  it 'can find the A shift' do
     shifted = ["d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b", "c"]
     expect(rotation.a_shift({:A => 3, :B=> 27, :C=> 73, :D => 20})).to eq(shifted)
   end
@@ -37,6 +37,6 @@ RSpec.describe Rotation do
   end
 
   it 'can decrypt a message given the shifts' do
-    expect(rotation.reverse("Keder ohUlw", {:A => 3, :B=> 27, :C=> 73, :D => 20})).to eq("hello world")
+    expect(rotation.reverse("Keder ohUlw", {:A => 3, :B=> 27, :C=> 73, :D => 20}, reverse=true)).to eq("hello world")
   end
 end
